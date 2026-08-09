@@ -1,65 +1,65 @@
-import Image from "next/image";
+import HomeIntro from '@/components/organisms/HomeIntro';
+import InterventionArea from '@/components/organisms/InterventionArea';
+import SectionChooseMe from '@/components/organisms/Sections/SectionChooseMe';
+import SectionProcess from '@/components/organisms/Sections/SectionProcess';
+import SectionSimpleCards from '@/components/organisms/Sections/SectionSimpleCards';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="p-4 flex flex-col gap-4">
+      <HomeIntro />
+      <InterventionArea />
+      <SectionSimpleCards
+        title="Mes trois expertises"
+        introduction="Un site web sans stratégie ni visibilité ne génère aucun résultat. Pour faire de votre présence en ligne un véritable levier de croissance, je vous accompagne à chaque étape clé de votre projet digital, de la conception initiale jusqu’à l’acquisition de trafic qualifié."
+        cta={{
+          label: 'Parlons de votre projet',
+          link: '#contact',
+        }}
+        cards={[
+          {
+            title: 'Stratégie digital',
+            description:
+              'Je vous aide à comprendre l’existant pour construire l’avenir.',
+            tags: [
+              'Analyse Expérience Utilisateur',
+              'Audit de performance',
+              'Audit de présence digital',
+              'Création stratégie visibilité et acquisition',
+            ],
+          },
+          {
+            title: 'Stratégie digital',
+            description:
+              'Je vous aide à comprendre l’existant pour construire l’avenir.',
+            tags: [
+              'Création de site vitrine',
+              'Boutique en ligne',
+              'Web design Shopify',
+              'Landing Page',
+              'Mise en place de Chatbot',
+              'Structure de contenu',
+              'Outils interne',
+            ],
+          },
+          {
+            title: 'Stratégie digital',
+            description:
+              'Je vous aide à comprendre l’existant pour construire l’avenir.',
+            tags: [
+              'SEO Local',
+              'Référencement Naturel',
+              'A/B Testing',
+              'Mise en place d’Analytics',
+              'Suivi acquisition & conversion',
+              'Référencement payant Google adwords',
+              'Visibilité sur les moteurs IA',
+            ],
+          },
+        ]}
+      />
+      <SectionProcess />
+      <SectionChooseMe />
+    </main>
   );
 }

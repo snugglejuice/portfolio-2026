@@ -1,0 +1,26 @@
+.section-simple-cards {
+  display: grid;
+  grid-template-areas:
+    'head cardA cardB'
+    'head cardC cardC';
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+
+  & div {
+    &:first-child {
+      grid-area: head;
+    }
+
+    &:nth-child(2) {
+      grid-area: cardA;
+    }
+
+    &:nth-child(3) {
+      grid-area: cardB;
+    }
+
+    &:nth-child(4) {
+      grid-area: cardC;
+    }
+  }
+}
