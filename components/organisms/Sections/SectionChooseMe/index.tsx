@@ -26,7 +26,7 @@ const CHOOSE_ME_CARDS = [
       les entrepreneurs.`,
     color: 'orange',
     className: 'max-w-92',
-    finalY: 280,
+    finalY: 190,
   },
   {
     title: 'MINDSET BUSINESS',
@@ -42,7 +42,7 @@ const CHOOSE_ME_CARDS = [
       'Un seul point de contact pour tout ce qui touche à votre site web Stratégie, UX, design, développement, SEO, évolution et optimisation.',
     color: 'green',
     className: 'max-w-92',
-    finalY: 320,
+    finalY: 280,
   },
   {
     title: 'TEAM PLAY',
@@ -135,7 +135,7 @@ export default function SectionChooseMe() {
               Pourquoi me choisir ?
             </h2>
           </div>
-          <div className="relative z-10 p-2 flex">
+          <div className="relative z-10 p-2 flex gap-4">
             {CHOOSE_ME_CARDS.map((card, index) => (
               <SlideUpCard
                 key={card.title}

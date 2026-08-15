@@ -1,6 +1,7 @@
 import HomeIntro from '@/components/organisms/HomeIntro';
 import InterventionArea from '@/components/organisms/InterventionArea';
 import SectionChooseMe from '@/components/organisms/Sections/SectionChooseMe';
+import SectionFAQ from '@/components/organisms/Sections/SectionFAQ';
 import SectionProcess from '@/components/organisms/Sections/SectionProcess';
 import SectionSimpleCards from '@/components/organisms/Sections/SectionSimpleCards';
 
@@ -60,6 +61,7 @@ export default function Home() {
       />
       <SectionProcess />
       <SectionChooseMe />
+      <SectionFAQ />
     </main>
   );
 }

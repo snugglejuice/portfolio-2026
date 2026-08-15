@@ -1,0 +1,11 @@
+.section-faq {
+  & summary {
+    &::marker {
+      content: '';
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+}
