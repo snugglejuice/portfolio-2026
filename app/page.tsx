@@ -1,3 +1,4 @@
+import Footer from '@/components/organisms/Footer';
 import HomeIntro from '@/components/organisms/HomeIntro';
 import InterventionArea from '@/components/organisms/InterventionArea';
 import SectionChooseMe from '@/components/organisms/Sections/SectionChooseMe';
@@ -62,6 +63,7 @@ export default function Home() {
       <SectionProcess />
       <SectionChooseMe />
       <SectionFAQ />
+      <Footer />
     </main>
   );
 }

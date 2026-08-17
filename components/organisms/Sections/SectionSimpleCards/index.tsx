@@ -22,7 +22,7 @@ export default function SectionSimpleCards({
       </div>
       {cards.map((card, index) => (
         <div
-          key={card.title}
+          key={`${card.title}-${index}`}
           className={cx(
             'p-10 flex flex-col gap-4 rounded-3xl overflow-hidden',
             {
