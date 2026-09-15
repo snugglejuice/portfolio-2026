@@ -1,0 +1,63 @@
+{
+  "frames": {
+    "BD-cadre.jpg": {
+      "frame": {
+        "x": 8,
+        "y": 8,
+        "w": 1884,
+        "h": 1881
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1884,
+        "h": 1881
+      },
+      "sourceSize": {
+        "w": 1884,
+        "h": 1881
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Laptop-illustration-2.png": {
+      "frame": {
+        "x": 1908,
+        "y": 8,
+        "w": 1505,
+        "h": 1241
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 1505,
+        "h": 1241
+      },
+      "sourceSize": {
+        "w": 1507,
+        "h": 1245
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "https://free-tex-packer.org",
+    "version": "0.6.7",
+    "image": "texture.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 3157,
+      "h": 1897
+    },
+    "scale": 1
+  }
+}
