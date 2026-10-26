@@ -12,9 +12,9 @@ export default function SiteLoader({ ref }: { ref?: React.Ref<HTMLElement> }) {
       )}
     >
       <p className="font-primary text-6xl font-bold uppercase col-start-2 col-end-11 text-foreground">
-        Soigner chaque détail du design. <br />
-        Optimiser chaque ligne de code. <br />
-        Transformer chaque visite en opportunité.
+        Care for every design detail. <br />
+        Optimise every line of code. <br />
+        Turn every visit into an opportunity.
       </p>
     </section>
   );

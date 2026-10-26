@@ -20,41 +20,41 @@ const STACK_AREA_BUFFER_REM = 24;
 const PROCESS_STEPS = [
   {
     number: '01',
-    title: 'Stratégie',
+    title: 'Strategy',
     benefits: [
-      'Définition enjeux et objectifs',
-      'Audit du site internet existant',
-      'Benchmark concurrence',
-      'Stratégie SEO',
+      'Defining challenges and goals',
+      'Audit of the existing website',
+      'Competitor benchmark',
+      'SEO strategy',
     ],
     color: 'yellow',
   },
   {
     number: '02',
     title: 'Design',
-    benefits: ['Direction artistique', 'Wireframe', 'Maquette haute fidélité'],
+    benefits: ['Art direction', 'Wireframes', 'High-fidelity mockups'],
     color: 'blue',
   },
   {
     number: '03',
-    title: 'Développement',
+    title: 'Development',
     benefits: [
-      'Mise en place CMS',
-      'Déploiement',
-      'Respect des normes Accessibilité AA',
+      'CMS setup',
+      'Deployment',
+      'WCAG AA accessibility compliance',
       'Performance',
     ],
     color: 'orange',
   },
   {
     number: '04',
-    title: 'Reportings',
+    title: 'Reporting',
     benefits: [
-      'Mise en place des analytics',
-      'Création des dashboard d’analyse',
-      'Rapports détaillés',
-      'Ajustement stratégique',
-      'Optimisation du site web ',
+      'Analytics setup',
+      'Analytics dashboards',
+      'Detailed reports',
+      'Strategy adjustments',
+      'Website optimisation',
     ],
     color: 'green',
   },
@@ -143,12 +143,11 @@ export default function SectionProcess() {
         >
           <div className="col-start-2 col-end-7">
             <h3 className="font-primary text-[96px] uppercase font-bold leading-none">
-              Processus & méthodo
+              Process & method
             </h3>
             <p className="font-secondary text-[24px] pt-4">
-              Pas de mauvaise surprise, ni de flou artistique. Je m&apos;appuie
-              sur une méthodologie éprouvée, transparente et collaborative pour
-              donner vie à vos ambitions.
+              No bad surprises, no vague promises. I rely on a proven,
+              transparent and collaborative method to bring ambitions to life.
             </p>
           </div>
           <div

@@ -12,57 +12,56 @@ export default function Home() {
       <HomeIntro />
       <InterventionArea />
       <SectionSimpleCards
-        title="Mes trois expertises"
-        introduction="Un site web sans stratégie ni visibilité ne génère aucun résultat. Pour faire de votre présence en ligne un véritable levier de croissance, je vous accompagne à chaque étape clé de votre projet digital, de la conception initiale jusqu’à l’acquisition de trafic qualifié."
+        title="What I bring to a team"
+        introduction="I’m a front-end developer with a designer’s eye, currently lead developer at a Lausanne agency and looking for my next full-time role in Zurich. I work where design decisions meet engineering constraints, from the first prototype to production code that stays fast and maintainable."
         cta={{
-          label: 'Parlons de votre projet',
-          link: '#contact',
+          label: 'See my work',
+          link: '/work',
         }}
         cards={[
           {
-            title: 'Stratégie digital',
+            title: 'Front-end engineering',
             description:
-              'Je vous aide à comprendre l’existant pour construire l’avenir.',
+              'I build interfaces that scale with the product and the team behind it.',
             tags: [
-              'Analyse Expérience Utilisateur',
-              'Audit de performance',
-              'Audit de présence digital',
-              'Création stratégie visibilité et acquisition',
+              'React & Next.js',
+              'TypeScript',
+              'Front-end architecture',
+              'Design systems',
+              'Data-heavy web apps',
+              'Code reviews & standards',
             ],
           },
           {
-            title: 'Stratégie digital',
+            title: 'Interaction & design',
             description:
-              'Je vous aide à comprendre l’existant pour construire l’avenir.',
+              'I work with designers from the first concept to the final details.',
             tags: [
-              'Création de site vitrine',
-              'Boutique en ligne',
-              'Web design Shopify',
-              'Landing Page',
-              'Mise en place de Chatbot',
-              'Structure de contenu',
-              'Outils interne',
+              'Interaction design',
+              'Animation (GSAP, CSS)',
+              'WebGL & shaders',
+              'Prototyping',
+              'User experience',
+              'Figma to code',
             ],
           },
           {
-            title: 'Stratégie digital',
+            title: 'Quality & performance',
             description:
-              'Je vous aide à comprendre l’existant pour construire l’avenir.',
+              'I care about the details people feel without noticing.',
             tags: [
-              'SEO Local',
-              'Référencement Naturel',
-              'A/B Testing',
-              'Mise en place d’Analytics',
-              'Suivi acquisition & conversion',
-              'Référencement payant Google adwords',
-              'Visibilité sur les moteurs IA',
+              'Core Web Vitals',
+              'Accessibility (WCAG)',
+              'SEO foundations',
+              'Analytics & A/B testing',
+              'AI-assisted development',
             ],
           },
         ]}
       />
       <SectionProcess />
       <SectionChooseMe />
-      <SectionFAQ />
+      {/* <SectionFAQ /> */}
       <Footer />
     </main>
   );

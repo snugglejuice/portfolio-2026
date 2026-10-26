@@ -1,37 +1,37 @@
-import Button from '@/components/atoms/button';
 import cx from 'classnames';
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__contact grid grid-cols-12 gap-4">
+      <div className="footer__contact grid grid-cols-1 lg:grid-cols-12 gap-4">
         <div
           className={cx(
-            'col-start-1 col-end-5 bg-foreground p-10 rounded-3xl',
-            'flex flex-col justify-between gap-16',
+            'lg:col-start-1 lg:col-end-5 bg-foreground p-6 md:p-10 rounded-3xl',
+            'flex flex-col justify-between gap-10 md:gap-16',
           )}
         >
           <div className="flex flex-col gap-4">
-            <h2 className="font-primary leading-none uppercase font-bold text-[64px]">
-              Collaborons ensemble
+            <h2 className="font-primary leading-none uppercase font-bold text-[44px] md:text-[64px]">
+              Let’s talk
             </h2>
-            <p className="font-secondary text-[24px]">
-              Un projet en tête ? Je suis tout ouïe. Promis, vous avez
-              <b> une réponse en moins de 24 heures.</b>
+            <p className="font-secondary text-xl md:text-[24px]">
+              I’m looking for a front-end developer role in
+              <b> Zurich</b>. Hiring, or know a team that is? I’d love to hear
+              from you.
             </p>
           </div>
           <dl>
-            <dt className="font-secondary text-[20px] font-bold">Téléphone</dt>
+            <dt className="font-secondary text-[20px] font-bold">Phone</dt>
             <dd className="font-secondary text-[20px]">
               <a href="tel:+41782249726" className="underline">
-                078 224 97 26
+                +41 78 224 97 26
               </a>
             </dd>
 
             <dt className="font-secondary text-[20px] font-bold">E-mail</dt>
             <dd className="font-secondary text-[20px]">
-              <a href="mailto:marion@seminel.ch" className="underline">
-                marion@seminel.ch
+              <a href="mailto:seminel.marion@gmail.com" className="underline">
+                seminel.marion@gmail.com
               </a>
             </dd>
 
@@ -46,43 +46,43 @@ export default function Footer() {
             </dd>
           </dl>
         </div>
-        <div className="footer__actions col-start-5 col-end-13 flex flex-col gap-4">
-          <div className="bg-green-brand py-8 px-6 rounded-3xl flex flex-col justify-between gap-16">
+        <div className="footer__actions lg:col-start-5 lg:col-end-13 flex flex-col gap-4">
+          {/* <div className="bg-green-brand py-8 px-6 rounded-3xl flex flex-col justify-between gap-10 md:gap-16">
             <div className="flex flex-col gap-4">
               <h3 className="font-primary leading-none uppercase font-bold text-[32px]">
-                Votre site est-il utile ?
+                Is your website pulling its weight?
               </h3>
-              <p className="font-secondary text-[24px]">
-                15 questions pour découvrir si votre site a l’impact qu’il
-                devrait sur votre business, découvrir les points d’amélioration
-                et obtenir des recommandations concrètes.
+              <p className="font-secondary text-xl md:text-[24px]">
+                15 questions to find out whether your website has the impact
+                it should on your business, spot what to improve and get
+                concrete recommendations.
               </p>
             </div>
-            <Button label="Lancer le quizz" fullWidth />
-          </div>
-          <div className="bg-orange-brand py-8 px-6 rounded-3xl flex flex-col gap-4">
+            <Button label="Start the quiz" fullWidth />
+          </div> */}
+          {/* <div className="bg-orange-brand py-8 px-6 rounded-3xl flex flex-col gap-4">
             <h3 className="font-primary leading-none uppercase font-bold text-[32px]">
               Newsletter
             </h3>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="text"
-                placeholder="Votre e-mail"
-                className="bg-foreground border-2 py-3 px-6 w-full font-secondary text-[24px]"
+                placeholder="Your e-mail"
+                className="bg-foreground border-2 py-3 px-6 w-full min-w-0 font-secondary text-xl md:text-[24px]"
               />
-              <Button label="S'abonner" />
+              <Button label="Subscribe" />
             </div>
-          </div>
-          <div className="bg-foreground py-8 px-6 rounded-3xl flex justify-between items-center">
+          </div> */}
+          <div className="bg-foreground py-8 px-6 rounded-3xl flex flex-col sm:flex-row gap-4 sm:justify-between sm:items-center">
             <p className="font-secondary text-[20px]">© 2026 Marion Séminel</p>
-            <nav>
-              <ul className="flex gap-7">
+            {/* <nav>
+              <ul className="flex flex-wrap gap-x-7 gap-y-2">
                 <li>
                   <a
-                    href="/politique-de-confidentialité"
+                    href="/privacy-policy"
                     className="font-secondary text-[20px] underline cursor-pointer"
                   >
-                    Politique de confidentialité
+                    Privacy policy
                   </a>
                 </li>
                 <li>
@@ -94,7 +94,7 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
           </div>
         </div>
       </div>

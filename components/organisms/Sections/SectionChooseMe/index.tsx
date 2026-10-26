@@ -19,27 +19,26 @@ const HIDDEN_Y_PX = 900;
 
 const CHOOSE_ME_CARDS = [
   {
-    title: '+ 6 ans d’expérience',
-    description: `J’ai crée des sites web et des outils internes pour des
-      entreprises dans des domaines varié : santé, finance, ERP mais
-      mes chouchous reste les musées, les festivals, les créateurs et
-      les entrepreneurs.`,
+    title: '6+ years of experience',
+    description: `I’ve built web apps and websites in many fields:
+      fintech, healthcare, ERP. Data-heavy dashboards or brand
+      websites for museums and festivals.`,
     color: 'orange',
     className: 'max-w-92',
     finalY: 190,
   },
   {
-    title: 'MINDSET BUSINESS',
+    title: 'PRODUCT MINDSET',
     description:
-      'Je comprends vos enjeux business. Votre site ne doit pas seulement être esthétique. Il doit attirer les bonnes personnes et les inciter à passer à l’action. C’est ma philosophie.',
+      'An interface isn’t done when it looks good. It’s done when people use it and the numbers move. I like working with clear metrics and seeing the impact of what I build.',
     color: 'blue',
     className: 'max-w-106',
     finalY: -64,
   },
   {
-    title: 'One woman show',
+    title: 'Design meets code',
     description:
-      'Un seul point de contact pour tout ce qui touche à votre site web Stratégie, UX, design, développement, SEO, évolution et optimisation.',
+      'I can shape a feature in Figma, build it in TypeScript and own it all the way to production, without losing anything between the two.',
     color: 'green',
     className: 'max-w-92',
     finalY: 280,
@@ -47,7 +46,7 @@ const CHOOSE_ME_CARDS = [
   {
     title: 'TEAM PLAY',
     description:
-      'Je ne recherche pas des clients mais des partenaires, des personnes avec qui collaborer sur le long terme dans un cadre d’amélioration et de confiance mutuelle. ',
+      'I work best close to designers, backend engineers and product people. I set front-end standards, share them, and care about building things together over the long term.',
     color: 'yellow',
     className: 'max-w-[320px]',
     finalY: -64,
@@ -132,7 +131,7 @@ export default function SectionChooseMe() {
                 },
               )}
             >
-              Pourquoi me choisir ?
+              Why choose me?
             </h2>
           </div>
           <div className="relative z-10 p-2 flex gap-4">

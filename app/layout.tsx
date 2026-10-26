@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Asap_Condensed, Karla } from 'next/font/google';
+import { Asap_Condensed, Karla, Rubik } from 'next/font/google';
+import Navigation from '@/components/organisms/Navigation';
 import SmoothScroll from '@/components/providers/SmoothScroll';
 import './globals.css';
 
@@ -15,11 +16,17 @@ const karla = Karla({
   weight: ['400', '500', '600', '700'],
 });
 
+// Navigation only (Figma: Rubik Bold 14px).
+const rubik = Rubik({
+  variable: '--font-rubik',
+  subsets: ['latin'],
+  weight: ['700'],
+});
+
 export const metadata: Metadata = {
-  title:
-    'Création de sites web et stratégie digitale en Suisse | Freelance digital à Lausanne',
+  title: 'Website design & digital strategy in Switzerland',
   description:
-    'Création et refonte de solution web : stratégie digitale, UX/UI design, développement, SEO et suivi des performances.',
+    'Building and redesigning websites: digital strategy, UX/UI design, development, SEO and performance tracking.',
 };
 
 export default function RootLayout({
@@ -30,9 +37,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${asapCondensed.variable} ${karla.variable} h-full antialiased`}
+      className={`${asapCondensed.variable} ${karla.variable} ${rubik.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Navigation />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

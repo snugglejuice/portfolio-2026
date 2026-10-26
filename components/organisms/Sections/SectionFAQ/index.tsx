@@ -18,7 +18,7 @@ export default function SectionFAQ() {
             'col-start-2 col-end-6',
           )}
         >
-          Comme disait la maîtresse, il n’y a pas de questions idiotes
+          As my teacher used to say, there’s no such thing as a silly question
         </h2>
         <div
           className={cx(
@@ -28,38 +28,34 @@ export default function SectionFAQ() {
         >
           <Question
             key="question-1"
-            summary="Combien coûte un site web en Suisse ?"
-            text="J’ai crée des sites web et des outils internes pour des
-              entreprises dans des domaines varié : santé, finance, ERP mais mes
-              chouchous reste les musées, les festivals, les créateurs et les
-              entrepreneurs."
+            summary="How much does a website cost in Switzerland?"
+            text="I’ve built websites and internal tools for companies in many
+              fields: healthcare, finance, ERP. But my favourites are still
+              museums, festivals, creators and entrepreneurs."
             color="blue"
           />
           <Question
             key="question-2"
-            summary="Combien coûte un site web en Suisse ?"
-            text="J’ai crée des sites web et des outils internes pour des
-              entreprises dans des domaines varié : santé, finance, ERP mais mes
-              chouchous reste les musées, les festivals, les créateurs et les
-              entrepreneurs."
+            summary="How much does a website cost in Switzerland?"
+            text="I’ve built websites and internal tools for companies in many
+              fields: healthcare, finance, ERP. But my favourites are still
+              museums, festivals, creators and entrepreneurs."
             color="green"
           />
           <Question
             key="question-3"
-            summary="Combien coûte un site web en Suisse ?"
-            text="J’ai crée des sites web et des outils internes pour des
-              entreprises dans des domaines varié : santé, finance, ERP mais mes
-              chouchous reste les musées, les festivals, les créateurs et les
-              entrepreneurs."
+            summary="How much does a website cost in Switzerland?"
+            text="I’ve built websites and internal tools for companies in many
+              fields: healthcare, finance, ERP. But my favourites are still
+              museums, festivals, creators and entrepreneurs."
             color="orange"
           />
           <Question
             key="question-4"
-            summary="Combien coûte un site web en Suisse ?"
-            text="J’ai crée des sites web et des outils internes pour des
-              entreprises dans des domaines varié : santé, finance, ERP mais mes
-              chouchous reste les musées, les festivals, les créateurs et les
-              entrepreneurs."
+            summary="How much does a website cost in Switzerland?"
+            text="I’ve built websites and internal tools for companies in many
+              fields: healthcare, finance, ERP. But my favourites are still
+              museums, festivals, creators and entrepreneurs."
             color="yellow"
           />
         </div>

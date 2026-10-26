@@ -14,7 +14,17 @@ import {
 } from 'motion/react';
 import { useCallback, useEffect, useRef } from 'react';
 
-const CITIES = ['Lausanne', 'Genève', 'Montreux', 'Vevey'];
+// const CITIES = ['Lausanne', 'Geneva', 'Montreux', 'Vevey'];
+
+const CITIES = [
+  'Design systems',
+  'Data-heavy dashboards',
+  'Interaction design',
+  'Animation',
+  'Accessibility',
+  'Performance',
+  'Multilingual websites',
+];
 
 // Ambient right-to-left crawl speed, in px/s.
 const BASE_SPEED = -32;
@@ -61,7 +71,7 @@ function RibbonSegment({ duplicate }: { duplicate?: boolean }) {
         className="font-primary text-[24px] font-semibold uppercase text-nowrap"
         aria-hidden={duplicate || undefined}
       >
-        Zone d&apos;intervention
+        Service area
       </Heading>
       <Star />
       <CityList hidden={duplicate} />
