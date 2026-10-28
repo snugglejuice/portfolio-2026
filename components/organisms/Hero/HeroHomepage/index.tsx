@@ -59,7 +59,7 @@ export default function HeroHomepage({
         >
           I design and develop web solutions that are <b>fast</b>,{' '}
           <b>accessible</b> and <b>business-driven</b>. From strategy to
-          development, every decision is made to accomplish a goal:
+          development, every decision is made to accomplish a goal:{' '}
           <b>improve user experience, generate leads,...</b>.
         </p>
       </div>
