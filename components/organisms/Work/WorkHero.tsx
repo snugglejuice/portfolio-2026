@@ -16,7 +16,7 @@ export default function WorkHero({
       )}
     >
       <div className="col-start-2 col-end-12 flex flex-col justify-between gap-6 lg:gap-16">
-        <h1 className="font-primary uppercase font-bold leading-[0.82] text-[clamp(88px,17vw,248px)] flex items-start motion-safe:animate-rise motion-safe:[animation-delay:50ms]">
+        <h1 className="font-primary uppercase font-bold leading-[0.82] text-[60px] sm:text-[clamp(88px,17vw,248px)] flex items-start motion-safe:animate-rise motion-safe:[animation-delay:50ms]">
           Projects
           <span className="font-primary text-[0.28em] leading-none mt-[0.18em] ml-2">
             {String(count).padStart(2, '0')}
