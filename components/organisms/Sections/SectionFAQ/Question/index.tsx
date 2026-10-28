@@ -12,7 +12,7 @@ export default function Question({ summary, text, color }: QuestionProps) {
     <details className={cx(`question`, 'hover:cursor-pointer')}>
       <summary
         className={cx(
-          'font-secondary font-semibold text-[24px] leading-none',
+          'font-secondary font-semibold text-lg md:text-[24px] leading-tight md:leading-none',
           'flex gap-5 items-center justify-between',
           `bg-foreground p-4 border-2`,
           'relative z-10',
@@ -50,7 +50,11 @@ export default function Question({ summary, text, color }: QuestionProps) {
           />
         </svg>
       </summary>
-      <p className={cx('p-4 font-secondary text-[20px] border-2 border-t-0')}>
+      <p
+        className={cx(
+          'p-4 font-secondary text-base md:text-[20px] border-2 border-t-0',
+        )}
+      >
         {text}
       </p>
     </details>

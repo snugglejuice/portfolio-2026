@@ -1,7 +1,3 @@
-// First draft of the /work content, written from public sources (live
-// sites, Superhuit case study). Every line marked TODO(Marion) is a guess or
-// a gap that needs your eye before going live.
-
 import type { BrandColor } from '@/lib/brand';
 
 export interface ProjectMedia {
@@ -37,14 +33,14 @@ export interface Project {
   focus?: { title: string; body: string[] };
   quote?: { text: string; author: string; role: string };
   stack: string[];
-  liveUrl: string;
-  superhuitUrl: string;
+  liveUrl?: string;
+  superhuitUrl?: string;
   cover: ProjectMedia;
   gallery: ProjectMedia[];
 }
 
 export const WORK_INTRO =
-  'As lead dev at Superhuit, I drove the development of platforms for a software company, a museum, a festival, a healthcare network and a city. Five projects, one obsession: making complex things easy to navigate.';
+  'As lead dev at Superhuit, I drove the front-end of an ERP product, and of websites for a museum, a festival, a healthcare network and a city. Before that, I designed and built fundraising tools at Ayomi, a Paris fintech. Seven projects, one obsession: making complex things easy to navigate.';
 
 const SUPERHUIT_URL = 'https://superhuit.ch/fr/';
 
@@ -52,37 +48,55 @@ const SUPERHUIT_URL = 'https://superhuit.ch/fr/';
 // same image file (see ProjectTab).
 export const COVER_SIZES = '(min-width: 768px) 84vw, 100vw';
 
+// Shown on the homepage, in /work order (and with their /work numbers, so a
+// card never morphs into a hero showing another number).
+export const FEATURED_SLUGS = [
+  'cid-erp',
+  'musee-croix-rouge',
+  'montreux-jazz-festival',
+];
+
 export const PROJECTS: Project[] = [
   {
     slug: 'cid-erp',
     name: 'CID ERP',
     client: 'Fair IT',
-    role: 'Lead dev',
-    // TODO(Marion): année de mise en ligne.
+    role: 'Lead front-end developer',
+    year: '2024 - Today',
     color: 'yellow',
     stickerBack: 'blue',
-    tags: ['Lead dev', 'Product site', 'Concrete CMS'],
+    tags: ['Lead dev', 'Product development', 'Design system'],
     pitch:
-      'Making sense of business software that covers an entire company.',
+      'Giving a long-running Swiss ERP a modern interface, without rewriting its engine.',
     summary: [
-      'CID ERP is modular Swiss business software: accounting, payroll, inventory, CRM… The site has to present dozens of modules without losing visitors who first want an answer for their own line of work.',
-      'Navigation is organised by profile (SMEs, institutions, industries), then by module, and every page shows the software in action instead of describing it.',
+      'CID ERP is modular Swiss business software covering accounting, payroll, inventory, CRM and more. Its interface had aged badly, and Fair IT asked Superhuit to redesign the whole product experience.',
+      'I designed the front-end architecture and wrote most of its code, with up to five developers on the team at the peak. I built the design system with our designers, then brought it and the new user flows into the live product while keeping the existing backend intact.',
+      'Since summer 2024, I have been the lead developer and owner of the front-end codebase. Today I support the Fair IT team as the platform evolves, and train them to ship new features on their own.',
     ],
     challenge: [
-      'A rich, technical product aimed at very different audiences: management, accounting, human resources. Each of them has to quickly find the part of the software that matters to them, and want to book a demo.',
+      'A legacy backend we could not rewrite: more than 200 OpenERP modules and nearly 4,000 view definitions, all described in XML on the server.',
+      'Every customer customises their screens, so we could not hand-code a fixed set of pages.',
+      'Very different users, from accountants entering data all day to managers and HR, working in dense forms and long tables.',
     ],
     answer: [
-      'An architecture built around solutions and modules, pages assembled from reusable blocks, and animated demos of the software embedded right in the content.',
-      // TODO(Marion): ce que tu as fait concrètement en tant que lead dev (blocs Concrete, perfs, intégration des démos, etc.).
-      'I led the development of the site, from setting up the templates to launch.',
+      'A new React and TypeScript front-end on top of the existing backend: the business logic stays where it is, and the interface is rebuilt from scratch.',
+      'An XML rendering engine. The front-end reads the XML of each screen, validates it against a schema, simplifies it, then turns it into React components. Every existing view and every customer customisation works without writing a screen by hand.',
+      'The ERP’s dynamic rules rebuilt on the front-end: fields that update each other, or appear and become read-only depending on other values, so forms behave the way users expect.',
+      'A design system of 60+ components in Storybook, built with our designers, and keyboard-friendly tables built for heavy data entry.',
     ],
-    // TODO(Marion): stack détectée sur le site live, à confirmer / compléter.
-    stack: ['Concrete CMS'],
+    stack: [
+      'React',
+      'TypeScript',
+      'TanStack Query',
+      'Storybook',
+      'XML / XSD',
+      'Python (OpenERP)',
+    ],
     liveUrl: 'https://www.cid-erp.ch/',
     superhuitUrl: SUPERHUIT_URL,
     cover: {
       type: 'image',
-      src: '/work/cid-erp/overview.webp',
+      src: '/work/cid-erp/overview-3.webp',
       width: 2560,
       height: 1476,
       alt: 'CID ERP software interface: general ledger view',
@@ -91,7 +105,7 @@ export const PROJECTS: Project[] = [
     gallery: [
       {
         type: 'image',
-        src: '/work/cid-erp/home.webp',
+        src: '/work/cid-erp/home-2.webp',
         width: 2400,
         height: 1500,
         alt: 'CID ERP website homepage',
@@ -113,14 +127,6 @@ export const PROJECTS: Project[] = [
         width: 1450,
         height: 836,
         alt: 'Animated demo: managing fixed assets in CID ERP',
-        layout: 'half',
-      },
-      {
-        type: 'image',
-        src: '/work/cid-erp/mobile.webp',
-        width: 900,
-        height: 1948,
-        alt: 'The CID ERP website on mobile',
         layout: 'half',
       },
     ],
@@ -221,18 +227,15 @@ export const PROJECTS: Project[] = [
     ],
     answer: [
       'A grid by day and by stage on desktop that folds into a chronological list on mobile, colourful artist cards and direct actions: listen, add to favourites, buy.',
-      // TODO(Marion): ton périmètre exact en tant que lead frontend (composants, état des billets, audio, transitions Swup…).
-      'As lead frontend, I led the development of this new programme interface.',
+      'I led the front-end development of the Montreux Jazz Festival redesign, keeping the structure but with a new style, a completely new programme and new videos / interactive sections.',
     ],
     focus: {
       title: 'A grid you can read at a glance',
       body: [
-        'Dates in columns, stages in rows: the Auditorium Stravinski and the Montreux Jazz Lab read side by side. Each card carries the essentials (time, artist, genres, price) and ticket status: available, sold out or waiting list.',
-        // TODO(Marion): détails techniques intéressants (lecteur audio, filtres par date, performance avec beaucoup d’images…).
+        'Dates in columns, stages in rows. Each card carries the essentials (time, artist, genres, price) and ticket status: available, sold out or waiting list, and lets you listen to the artist.',
       ],
     },
-    // TODO(Marion): stack détectée sur le site live (WordPress + Swup), à confirmer.
-    stack: ['WordPress', 'Swup'],
+    stack: ['WordPress'],
     liveUrl: 'https://www.montreuxjazzfestival.com/fr/programme/',
     superhuitUrl: SUPERHUIT_URL,
     cover: {
@@ -245,25 +248,25 @@ export const PROJECTS: Project[] = [
     },
     gallery: [
       {
-        type: 'image',
-        src: '/work/montreux-jazz/programme-01.webp',
-        width: 2400,
-        height: 1500,
+        type: 'video',
+        src: '/work/montreux-jazz/MJF.mp4',
+        width: 1440,
+        height: 1080,
         alt: 'Header of the Montreux Jazz Festival programme page',
         layout: 'full',
       },
       {
         type: 'image',
-        src: '/work/montreux-jazz/mobile.webp',
+        src: '/work/montreux-jazz/MJF-2.webp',
         width: 900,
-        height: 1948,
+        height: 900,
         alt: 'The programme on mobile, as a chronological list',
         layout: 'half',
       },
       {
         type: 'image',
-        src: '/work/montreux-jazz/programme-03.webp',
-        width: 2400,
+        src: '/work/montreux-jazz/MJF-3.webp',
+        width: 1500,
         height: 1500,
         alt: 'Artist cards with clips to listen to and ticket availability',
         layout: 'half',
@@ -275,12 +278,11 @@ export const PROJECTS: Project[] = [
     name: 'Holentis',
     client: 'Holentis (formerly Rachis Clinic)',
     role: 'Lead dev',
-    // TODO(Marion): année de mise en ligne.
+    year: '2026',
     color: 'green',
     stickerBack: 'yellow',
     tags: ['Lead dev', 'Rebranding', 'WordPress'],
-    pitch:
-      'Taking a name change online: Rachis Clinic becomes Holentis.',
+    pitch: 'Taking a name change online: Rachis Clinic becomes Holentis.',
     summary: [
       'Holentis brings together doctors, therapists and musculoskeletal rehabilitation specialists in a flagship centre in Lausanne-Vennes and twelve consultation centres across French-speaking Switzerland.',
       'The site has to establish a new name without losing the trust of patients, referring doctors and partner companies.',
@@ -290,10 +292,8 @@ export const PROJECTS: Project[] = [
     ],
     answer: [
       'Dedicated spaces for doctors and patients, a rehabilitation journey explained step by step, sourced figures to frame the issue, and an interactive map of the consultation centres.',
-      // TODO(Marion): ton apport précis (thème WordPress, blocs, carte, accessibilité, perfs…).
-      'I led the development of the site, from implementing the new identity to launch.',
+      'As the only developer on the project, I took it from the new identity to launch.',
     ],
-    // TODO(Marion): stack détectée sur le site live (WordPress), à confirmer / compléter.
     stack: ['WordPress'],
     liveUrl: 'https://holentis.ch/',
     superhuitUrl: SUPERHUIT_URL,
@@ -341,16 +341,127 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    slug: 'ayomi-campaign-dashboard',
+    name: 'Ayomi Campaign Dashboard',
+    shortName: 'Ayomi Dashboard',
+    client: 'Ayomi',
+    role: 'UI/UX designer & front-end developer',
+    year: '2021 - 2023',
+    color: 'blue',
+    stickerBack: 'yellow',
+    tags: ['Fintech', 'Product design', 'React'],
+    pitch:
+      'One place for entrepreneurs to prepare, run and track their fundraising.',
+    summary: [
+      'Ayomi is a Paris fintech that helps entrepreneurs raise capital, with tools that automate the preparation, tracking and legal formalities of a fundraising round.',
+      'Each step of a round had its own tool. Entrepreneurs got lost between them, and investor relations managers had to send recap emails full of links before every meeting.',
+      'I designed the new dashboard and built its front-end, working with a team of five backend developers.',
+    ],
+    challenge: [
+      'Bring a five-phase journey into a single, simple platform: financing file, network preparation, project page, email campaign and launch.',
+      'Importing contacts from Gmail, Outlook, LinkedIn or CSV files relied on a complex API with many edge cases, and on long-running tasks the user had to be kept informed about.',
+      'Four backend developers took turns on the import feature, so the front-end had to stay stable while the API kept evolving.',
+    ],
+    answer: [
+      'A dashboard that shows every phase, its progress and the next action to take, with the amount raised, investments in progress and campaign statistics on the same page.',
+      'Business logic decoupled from the interface with Redux, and real-time progress on each import with Socket.io: imported, in progress, or failed with a clear reason and a retry button.',
+      'API routes defined with the backend before building, code reviews on both sides and shared documentation, so each developer could pick up where the last one left off.',
+    ],
+    focus: {
+      title: 'The impact',
+      body: [
+        '+41% contacts imported per project on average after the new contact import.',
+        'Meetings with investor relations managers twice as short, with every task gathered on one page.',
+      ],
+    },
+    stack: [
+      'React',
+      'Redux',
+      'Socket.io',
+      'Jest',
+      'React Testing Library',
+      'Figma',
+    ],
+    cover: {
+      type: 'image',
+      src: '/work/ayomi/dashboard.webp',
+      width: 2296,
+      height: 2138,
+      alt: 'Ayomi campaign dashboard: next actions, campaign calendar, amount raised and statistics',
+      layout: 'full',
+    },
+    gallery: [],
+  },
+  {
+    slug: 'ayomi-customer-care',
+    name: 'Ayomi Customer Care CRM',
+    shortName: 'Ayomi CRM',
+    client: 'Ayomi',
+    role: 'UI/UX designer & front-end developer',
+    year: '2022',
+    color: 'green',
+    stickerBack: 'orange',
+    tags: ['Fintech', 'Internal tool', 'React'],
+    pitch: 'A CRM that gives the Customer Care team every answer in one place.',
+    summary: [
+      'Entrepreneurs raising funds with Ayomi dealt with many teams: structuring, marketing, investor relations, legal, support. They often did not know who to ask, and the Customer Care team had to search several tools for each answer.',
+      'Working with a backend developer and the product owner, I designed and built a CRM that gathers everything about a client on one screen: fundraising status, KYC verification, appointments, related projects and comments.',
+    ],
+    challenge: [
+      'Understand the real needs of a team that knows its job far better than we do.',
+      'Keep the interface fast with thousands of clients, on every machine of the team.',
+      'Ship a reliable internal tool in three weeks, then keep improving it.',
+    ],
+    answer: [
+      'Three weeks of process: questioning the operational teams, listening to client calls and reading the support chat, then prioritising quick wins for an MVP, wireframes and feedback before building.',
+      'Optimistic UI so users never wait for the server, virtualised lists that render only what is on screen, and code splitting for a faster first load.',
+      'Test-driven development for each component, every state documented in Storybook, and a dedicated Telegram chat with the team to collect feedback after each new feature.',
+    ],
+    focus: {
+      title: 'Built with its users',
+      body: [
+        'Very few incoming support tickets after launch.',
+        'New features added one by one based on their impact on the Customer Care team, such as adding an investor or listening to past calls.',
+      ],
+    },
+    stack: [
+      'React',
+      'Redux',
+      'React Virtualized',
+      'Jest',
+      'React Testing Library',
+      'Storybook',
+      'Figma',
+    ],
+    cover: {
+      type: 'image',
+      src: '/work/ayomi/care-client.webp',
+      width: 2087,
+      height: 1558,
+      alt: 'Ayomi Customer Care CRM: client profile with fundraising details, team in charge, appointments and comments',
+      layout: 'full',
+    },
+    gallery: [
+      {
+        type: 'image',
+        src: '/work/ayomi/care-list.webp',
+        width: 1950,
+        height: 1460,
+        alt: 'Ayomi Customer Care CRM: searchable client list with contact details, project, type and status',
+        layout: 'full',
+      },
+    ],
+  },
+  {
     slug: 'agenda-lausanne',
     name: 'Lausanne Events Calendar',
     client: 'City of Lausanne',
     role: 'Lead dev',
-    // TODO(Marion): année de mise en ligne.
+    year: '2025',
     color: 'orange',
     stickerBack: 'green',
-    tags: ['Lead dev', 'Vue.js', 'Public service'],
-    pitch:
-      'Hundreds of events to explore by theme, by date or by venue.',
+    tags: ['Lead dev', 'React', 'Tailwind'],
+    pitch: 'Hundreds of events to explore by theme, by date or by venue.',
     summary: [
       'The City of Lausanne’s events calendar brings together exhibitions, concerts, kids’ activities and neighbourhood events for every audience.',
       'Three entry points lead to the same content: suggestions by theme, a filterable calendar and a map of venues.',
@@ -360,18 +471,15 @@ export const PROJECTS: Project[] = [
     ],
     answer: [
       'A calendar with simple filters (indoors, evening, free…), a map that groups events by venue, and editorial picks for inspiration.',
-      // TODO(Marion): ton apport précis (app Vue intégrée au site de la Ville, API, filtres, carte, perfs…).
-      'I led the development of the calendar, from filtered search to the venue map.',
+      'I led the development, working with another another developper.',
     ],
     focus: {
       title: 'Three entry points, one set of content',
       body: [
         'By theme for inspiration, by date to plan ahead, by venue to go out nearby: all three views share the same data and the same filters.',
-        // TODO(Marion): détails techniques (gestion de l’état des filtres, URL partageables, clustering de la carte…).
       ],
     },
-    // TODO(Marion): stack détectée sur le site live (Vue + Vite, dans le CMS Magnolia de la Ville), à confirmer.
-    stack: ['Vue.js', 'Vite'],
+    stack: ['React', 'Vite', 'CMS Nova'],
     liveUrl: 'https://www.lausanne.ch/agenda-et-actualites/agenda.html',
     superhuitUrl: SUPERHUIT_URL,
     cover: {
@@ -420,3 +528,47 @@ export function getNextProject(slug: string) {
   const index = PROJECTS.findIndex((project) => project.slug === slug);
   return PROJECTS[(index + 1) % PROJECTS.length];
 }
+
+// Smaller projects, listed after the case studies on /work (no detail page).
+export interface OtherProject {
+  name: string;
+  role: string;
+  // Agency or company the project was done with.
+  company?: string;
+  stack: string[];
+  // One line of context, under the name.
+  note?: string;
+  url?: string;
+}
+
+export const OTHER_PROJECTS: OtherProject[] = [
+  {
+    name: 'Vaudoise Arena',
+    role: 'Maintenance',
+    company: 'Superhuit',
+    stack: ['Vue.js', 'Nuxt', 'Strapi'],
+    note: 'Took over the site when the client moved its account to Superhuit.',
+    url: 'https://www.vaudoisearena.ch/',
+  },
+  {
+    name: 'Tipee',
+    role: 'Front-end developer (support)',
+    company: 'Superhuit',
+    stack: ['WordPress (headless)', 'Next.js'],
+    url: 'https://www.tipee.ch/',
+  },
+  {
+    name: 'Pulse Up',
+    role: 'Front-end developer (support)',
+    company: 'Superhuit',
+    stack: ['WordPress (headless)', 'Next.js'],
+    url: 'https://www.pulsemedica.ch/',
+  },
+  {
+    name: 'Conciergerie Océanis',
+    role: 'Design & lead dev',
+    company: 'Side project',
+    stack: ['WordPress (headless)', 'Next.js'],
+    url: 'https://www.conciergerie-oceanis.fr/',
+  },
+];

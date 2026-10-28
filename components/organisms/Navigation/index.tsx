@@ -212,12 +212,14 @@ export default function Navigation() {
         transform: isHidden ? 'translateY(-110%)' : undefined,
       }}
     >
-      <Link
-        href="/"
-        aria-label="Home — Marion Séminel"
-        className="relative z-10 pointer-events-auto"
-      >
-        <Image src={logo} alt="" width={40} height={40} priority />
+      <Link href="/" className="relative z-10 pointer-events-auto">
+        <Image
+          src={logo}
+          alt="Home — Marion Séminel"
+          width={40}
+          height={40}
+          priority
+        />
       </Link>
 
       <nav aria-label="Main navigation">

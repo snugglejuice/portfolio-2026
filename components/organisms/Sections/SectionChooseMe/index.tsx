@@ -9,6 +9,7 @@ import {
 } from 'motion/react';
 import { useRef } from 'react';
 import cx from 'classnames';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 import ChooseMeCard from './ChooseMeCard';
 
 // Shared absolute starting offset for every card, regardless of its own
@@ -24,32 +25,36 @@ const CHOOSE_ME_CARDS = [
       fintech, healthcare, ERP. Data-heavy dashboards or brand
       websites for museums and festivals.`,
     color: 'orange',
-    className: 'max-w-92',
+    className: 'lg:max-w-92',
     finalY: 190,
+    entryRotate: -6,
   },
   {
     title: 'PRODUCT MINDSET',
     description:
       'An interface isn’t done when it looks good. It’s done when people use it and the numbers move. I like working with clear metrics and seeing the impact of what I build.',
     color: 'blue',
-    className: 'max-w-106',
+    className: 'lg:max-w-106',
     finalY: -64,
+    entryRotate: 5,
   },
   {
     title: 'Design meets code',
     description:
       'I can shape a feature in Figma, build it in TypeScript and own it all the way to production, without losing anything between the two.',
     color: 'green',
-    className: 'max-w-92',
+    className: 'lg:max-w-92',
     finalY: 280,
+    entryRotate: -4,
   },
   {
     title: 'TEAM PLAY',
     description:
       'I work best close to designers, backend engineers and product people. I set front-end standards, share them, and care about building things together over the long term.',
     color: 'yellow',
-    className: 'max-w-[320px]',
+    className: 'lg:max-w-[320px]',
     finalY: -64,
+    entryRotate: 6,
   },
 ] as const;
 
@@ -58,6 +63,7 @@ interface SlideUpCardProps {
   index: number;
   total: number;
   scrollYProgress: MotionValue<number>;
+  isDesktop: boolean;
 }
 
 function SlideUpCard({
@@ -65,17 +71,27 @@ function SlideUpCard({
   index,
   total,
   scrollYProgress,
+  isDesktop,
 }: SlideUpCardProps) {
   const start = index / total;
   const end = (index + 1) / total;
+  // Below lg the cards form a deck: each lands on the same spot, fully
+  // covering the previous one, and straightens out from a tilt as it lands.
+  // The pinned panel is shorter than 100svh, so starting one viewport down
+  // keeps the card just out of sight and visibly moving for its whole phase.
   const y = useTransform(
     scrollYProgress,
     [start, end],
-    [`${HIDDEN_Y_PX}px`, `${card.finalY}px`],
+    isDesktop ? [`${HIDDEN_Y_PX}px`, `${card.finalY}px`] : ['100svh', '0svh'],
+  );
+  const rotate = useTransform(
+    scrollYProgress,
+    [start, end],
+    [isDesktop ? 0 : card.entryRotate, 0],
   );
 
   return (
-    <motion.div style={{ y }}>
+    <motion.div className="col-start-1 row-start-1" style={{ y, rotate }}>
       <ChooseMeCard
         title={card.title}
         description={card.description}
@@ -87,6 +103,7 @@ function SlideUpCard({
 }
 
 export default function SectionChooseMe() {
+  const isDesktop = useIsDesktop();
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 'all' });
   const driverRef = useRef<HTMLDivElement>(null);
@@ -105,7 +122,7 @@ export default function SectionChooseMe() {
       >
         <div
           className={cx(
-            'rounded-3xl py-20 h-[calc(100vh-32px)]',
+            'rounded-3xl py-10 md:py-20 h-[calc(100svh-32px)]',
             'sticky top-4 overflow-hidden',
             'transition-all duration-500',
             {
@@ -123,7 +140,8 @@ export default function SectionChooseMe() {
           >
             <h2
               className={cx(
-                'font-primary uppercase font-bold text-[96px]',
+                'font-primary uppercase font-bold text-[clamp(48px,12vw,96px)]',
+                'leading-none text-center px-6',
                 'transition-all duration-500',
                 {
                   'text-black': !isInView,
@@ -131,10 +149,17 @@ export default function SectionChooseMe() {
                 },
               )}
             >
-              Why choose me?
+              Why work with me?
             </h2>
           </div>
-          <div className="relative z-10 p-2 flex gap-4">
+          <div
+            className={cx(
+              'relative z-10 h-full grid content-center px-4',
+              'md:max-w-xl md:mx-auto',
+              'lg:flex lg:content-normal lg:h-auto lg:gap-4 lg:p-2',
+              'lg:max-w-none lg:mx-0',
+            )}
+          >
             {CHOOSE_ME_CARDS.map((card, index) => (
               <SlideUpCard
                 key={card.title}
@@ -142,6 +167,7 @@ export default function SectionChooseMe() {
                 index={index}
                 total={CHOOSE_ME_CARDS.length}
                 scrollYProgress={scrollYProgress}
+                isDesktop={isDesktop}
               />
             ))}
           </div>

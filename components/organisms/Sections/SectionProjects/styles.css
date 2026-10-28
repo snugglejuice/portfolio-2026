@@ -1,0 +1,66 @@
+.section-projects__stack {
+  /* Below lg the nav hides on scroll down: the stack can use the top edge
+     (the nav briefly covers the first strip when it comes back). */
+  --stack-base: 1rem;
+  --stack-step: 4rem;
+
+  @media (width >= 64rem) {
+    --stack-base: 16px;
+    --stack-step: 6rem;
+  }
+
+  /* Every project card has the same height: the last one, once stuck, ends
+     1rem above the screen bottom (capped on tall screens). --stack-n (the
+     number of project cards) is set inline. */
+  --card-height: min(
+    100svh - 1rem - var(--stack-base) - (var(--stack-n) - 1) * var(--stack-step),
+    44rem
+  );
+}
+
+.section-projects__card {
+  position: sticky;
+  top: calc(var(--stack-base) + var(--i) * var(--stack-step));
+}
+
+/* The stack must leave as one block. A sticky card is released when the
+   stack's bottom reaches its own margin box bottom, so each project card's
+   margin box ends on the same line as the end card (one step lower per card
+   after it): all of them let go together, the moment the end card has
+   covered the last project. */
+.section-projects__card--project {
+  min-height: var(--card-height);
+  margin-bottom: calc((var(--stack-n) - 1 - var(--i)) * var(--stack-step));
+}
+
+/* One step shorter than a project card, as it sticks one step lower: it
+   ends exactly on the last project card's bottom. */
+.section-projects__card--end {
+  min-height: calc(var(--card-height) - var(--stack-step));
+}
+
+/* Each card arrives tilted and straightens before it sticks. CSS
+   scroll-driven, so no JS; without support (or with reduced motion) the
+   cards are simply flat. The range is a scroll distance, not the card's
+   height: a card taller than the room below its sticky top never fully
+   "enters", and would otherwise stay tilted once stuck. Flat once stuck, so
+   page-transition snapshots of a card are never tilted. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section-projects__card {
+      animation: section-projects-tilt linear both;
+      animation-timeline: view();
+      animation-range: cover 0px cover 50vh;
+    }
+  }
+}
+
+@keyframes section-projects-tilt {
+  from {
+    transform: rotate(var(--tilt));
+  }
+
+  to {
+    transform: none;
+  }
+}

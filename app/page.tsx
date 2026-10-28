@@ -2,8 +2,8 @@ import Footer from '@/components/organisms/Footer';
 import HomeIntro from '@/components/organisms/HomeIntro';
 import InterventionArea from '@/components/organisms/InterventionArea';
 import SectionChooseMe from '@/components/organisms/Sections/SectionChooseMe';
-import SectionFAQ from '@/components/organisms/Sections/SectionFAQ';
 import SectionProcess from '@/components/organisms/Sections/SectionProcess';
+import SectionProjects from '@/components/organisms/Sections/SectionProjects';
 import SectionSimpleCards from '@/components/organisms/Sections/SectionSimpleCards';
 
 export default function Home() {
@@ -11,13 +11,10 @@ export default function Home() {
     <main className="p-4 flex flex-col gap-4">
       <HomeIntro />
       <InterventionArea />
+      <SectionProjects />
       <SectionSimpleCards
         title="What I bring to a team"
         introduction="I’m a front-end developer with a designer’s eye, currently lead developer at a Lausanne agency and looking for my next full-time role in Zurich. I work where design decisions meet engineering constraints, from the first prototype to production code that stays fast and maintainable."
-        cta={{
-          label: 'See my work',
-          link: '/work',
-        }}
         cards={[
           {
             title: 'Front-end engineering',
@@ -39,7 +36,7 @@ export default function Home() {
             tags: [
               'Interaction design',
               'Animation (GSAP, CSS)',
-              'WebGL & shaders',
+              // 'WebGL & shaders',
               'Prototyping',
               'User experience',
               'Figma to code',

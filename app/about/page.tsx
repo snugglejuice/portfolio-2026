@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import cx from 'classnames';
+import Image from 'next/image';
 
 import Footer from '@/components/organisms/Footer';
 import { BRAND_BG_CLASS, type BrandColor } from '@/lib/brand';
+import StickerImage from '@/components/atoms/StickerImage';
 
 export const metadata: Metadata = {
   title: 'About | Marion Séminel',
@@ -44,8 +46,7 @@ const LISTS: { title: string; items: string[]; color: BrandColor }[] = [
       'Illustration',
       'Game design',
       'Video Game',
-      'Hogward Legacy',
-      'Civilisation VI',
+      'Volunteering',
     ],
   },
 ];
@@ -77,15 +78,15 @@ export default function About() {
       </header>
 
       <section className="bg-foreground rounded-3xl grid grid-cols-12 gap-x-5 gap-y-10 py-14 md:py-20">
-        {/* Placeholder until the illustration / picture is ready: swap the
-            inner div for a next/image with `fill` and `object-cover`. */}
-        <figure className="col-start-2 col-end-12 lg:col-end-6 relative aspect-4/5 rounded-3xl overflow-hidden bg-yellow-brand">
-          <div
-            aria-hidden
-            className="absolute inset-0 flex items-center justify-center font-primary font-bold uppercase text-2xl text-black/40"
-          >
-            Illustration
-          </div>
+        <figure className="col-start-2 col-end-12 lg:col-end-6 relative aspect-4/5 rounded-3xl overflow-hidde">
+          <StickerImage
+            src="/about/portrait-1.webp"
+            width={603}
+            height={754}
+            alt="Portrait - Marion Séminel"
+            backColor="#ecc03a"
+            sizes="50vw"
+          />
         </figure>
 
         <div className="col-start-2 col-end-12 lg:col-start-7 lg:col-end-12 flex flex-col justify-between gap-10">

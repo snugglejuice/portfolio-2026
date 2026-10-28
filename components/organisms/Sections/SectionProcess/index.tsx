@@ -8,14 +8,29 @@ import {
   type MotionValue,
 } from 'motion/react';
 import { useRef } from 'react';
+import { useIsDesktop } from '@/lib/useIsDesktop';
 import ProcessCard from './ProcessCard';
 
-// Vertical reveal per card, in rem, once stacked — small enough that only
-// the number + title row of the card behind stays visible.
-const STACK_STEP_REM = 6;
-// Extra room (in rem) above the tallest card's own height, so the stack
-// area never clips a card mid-animation.
-const STACK_AREA_BUFFER_REM = 24;
+interface StackLayout {
+  // Vertical reveal per card, in rem, once stacked — small enough that only
+  // the number + title row of the card behind stays visible.
+  stepRem: number;
+  // Extra room (in rem) above the tallest card's own height, so the stack
+  // area never clips a card mid-animation.
+  bufferRem: number;
+}
+
+// Below lg the title sits above the stack in the same pinned panel, so the
+// cards (and their title rows) are smaller and stack tighter.
+const STACK_LAYOUT_MOBILE: StackLayout = { stepRem: 3, bufferRem: 17 };
+const STACK_LAYOUT_DESKTOP: StackLayout = { stepRem: 6, bufferRem: 24 };
+
+function stackAreaHeightRem(
+  total: number,
+  { stepRem, bufferRem }: StackLayout,
+) {
+  return (total - 1) * stepRem + bufferRem;
+}
 
 const PROCESS_STEPS = [
   {
@@ -65,6 +80,7 @@ interface StackedCardProps {
   index: number;
   total: number;
   scrollYProgress: MotionValue<number>;
+  layout: StackLayout;
 }
 
 function StackedCard({
@@ -72,6 +88,7 @@ function StackedCard({
   index,
   total,
   scrollYProgress,
+  layout,
 }: StackedCardProps) {
   // One extra phase is reserved at the end of the scroll range so the
   // fully-stacked group holds in place for a beat before the section
@@ -84,8 +101,8 @@ function StackedCard({
   // Every card but the first starts below the visible stack area (clipped
   // by its overflow-hidden), so only card 1 shows on initial render — each
   // one then climbs up into its stacked slot during its own scroll phase.
-  const areaHeightRem = (total - 1) * STACK_STEP_REM + STACK_AREA_BUFFER_REM;
-  const restTopRem = index * STACK_STEP_REM;
+  const areaHeightRem = stackAreaHeightRem(total, layout);
+  const restTopRem = index * layout.stepRem;
   const initialOffsetRem = index === 0 ? 0 : areaHeightRem - restTopRem;
   const y = useTransform(
     scrollYProgress,
@@ -106,7 +123,7 @@ function StackedCard({
     <motion.div
       className="absolute inset-x-0"
       style={{
-        top: `${index * STACK_STEP_REM}rem`,
+        top: `${restTopRem}rem`,
         zIndex,
         y,
       }}
@@ -122,6 +139,7 @@ function StackedCard({
 }
 
 export default function SectionProcess() {
+  const layout = useIsDesktop() ? STACK_LAYOUT_DESKTOP : STACK_LAYOUT_MOBILE;
   const driverRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: driverRef,
@@ -136,24 +154,24 @@ export default function SectionProcess() {
       >
         <div
           className={cx(
-            'bg-foreground rounded-3xl py-20',
-            'grid grid-cols-12 gap-5 items-start',
-            'sticky top-4 overflow-hidden h-[calc(100vh-32px)]',
+            'bg-foreground rounded-3xl py-8 md:py-20',
+            'grid grid-cols-12 gap-x-5 gap-y-6 items-start content-start lg:content-normal',
+            'sticky top-4 overflow-hidden h-[calc(100svh-32px)]',
           )}
         >
-          <div className="col-start-2 col-end-7">
-            <h3 className="font-primary text-[96px] uppercase font-bold leading-none">
-              Process & method
+          <div className="col-start-2 col-end-12 lg:col-end-7">
+            <h3 className="font-primary text-[40px] md:text-[64px] lg:text-[96px] uppercase font-bold leading-[0.9] md:leading-none">
+              How I work in a team
             </h3>
-            <p className="font-secondary text-[24px] pt-4">
+            <p className="font-secondary text-base md:text-[24px] pt-3 md:pt-4">
               No bad surprises, no vague promises. I rely on a proven,
               transparent and collaborative method to bring ambitions to life.
             </p>
           </div>
           <div
-            className="col-start-8 col-end-12 relative"
+            className="col-start-2 col-end-12 lg:col-start-8 relative"
             style={{
-              height: `${(PROCESS_STEPS.length - 1) * STACK_STEP_REM + STACK_AREA_BUFFER_REM}rem`,
+              height: `${stackAreaHeightRem(PROCESS_STEPS.length, layout)}rem`,
             }}
           >
             {PROCESS_STEPS.map((step, index) => (
@@ -163,6 +181,7 @@ export default function SectionProcess() {
                 index={index}
                 total={PROCESS_STEPS.length}
                 scrollYProgress={scrollYProgress}
+                layout={layout}
               />
             ))}
           </div>

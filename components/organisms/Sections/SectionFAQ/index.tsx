@@ -8,21 +8,21 @@ export default function SectionFAQ() {
     <section className="section-faq">
       <div
         className={cx(
-          'bg-foreground p-10 flex flex-col gap-4 rounded-3xl',
-          'grid grid-cols-12 gap-5 items-start py-20 px-0',
+          'bg-foreground rounded-3xl',
+          'grid grid-cols-12 gap-x-5 gap-y-8 items-start py-14 md:py-20',
         )}
       >
         <h2
           className={cx(
-            'font-primary font-bold text-[64px] uppercase leading-none',
-            'col-start-2 col-end-6',
+            'font-primary font-bold text-[44px] md:text-[64px] uppercase leading-none',
+            'col-start-2 col-end-12 lg:col-end-6',
           )}
         >
           As my teacher used to say, there’s no such thing as a silly question
         </h2>
         <div
           className={cx(
-            'col-start-7 col-end-12 relative',
+            'col-start-2 col-end-12 lg:col-start-7 relative',
             'flex flex-col gap-4',
           )}
         >

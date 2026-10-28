@@ -39,7 +39,7 @@ const SKEW_VELOCITY_RANGE = MAX_SPEED / VELOCITY_MULTIPLIER;
 function Star() {
   return (
     <span
-      className="font-primary text-[24px] font-semibold uppercase leading-normal relative -top-0.5"
+      className="font-primary text-lg md:text-[24px] font-semibold uppercase leading-normal relative -top-0.5"
       aria-hidden
     >
       ⭑
@@ -50,11 +50,11 @@ function Star() {
 function CityList({ hidden }: { hidden?: boolean }) {
   return (
     <ul
-      className="flex gap-6 list-none font-primary text-[24px] font-semibold uppercase"
+      className="flex gap-4 md:gap-6 list-none font-primary text-lg md:text-[24px] font-semibold uppercase"
       aria-hidden={hidden || undefined}
     >
       {CITIES.map((city) => (
-        <li key={city} className="flex gap-6 items-center">
+        <li key={city} className="flex gap-4 md:gap-6 items-center">
           {city} <Star />
         </li>
       ))}
@@ -68,10 +68,10 @@ function RibbonSegment({ duplicate }: { duplicate?: boolean }) {
   return (
     <>
       <Heading
-        className="font-primary text-[24px] font-semibold uppercase text-nowrap"
+        className="font-primary text-lg md:text-[24px] font-semibold uppercase text-nowrap"
         aria-hidden={duplicate || undefined}
       >
-        Service area
+        Skills
       </Heading>
       <Star />
       <CityList hidden={duplicate} />
@@ -148,8 +148,8 @@ export default function InterventionArea() {
 
   if (prefersReducedMotion) {
     return (
-      <section className="bg-green-brand py-2.5 px-7.5 rounded-full overflow-hidden">
-        <div className="flex items-center gap-6 w-max">
+      <section className="bg-green-brand py-2 md:py-2.5 px-5 md:px-7.5 rounded-full overflow-hidden">
+        <div className="flex items-center gap-4 md:gap-6 w-max">
           <RibbonSegment />
         </div>
       </section>
@@ -157,19 +157,19 @@ export default function InterventionArea() {
   }
 
   return (
-    <section className="bg-green-brand py-2.5 px-7.5 rounded-full overflow-hidden">
+    <section className="bg-green-brand py-2 md:py-2.5 px-5 md:px-7.5 rounded-full overflow-hidden">
       <motion.div
         ref={trackRef}
         style={{ x, skewX }}
-        className="flex gap-6 w-max"
+        className="flex gap-4 md:gap-6 w-max"
       >
-        <div className="flex items-center gap-6 shrink-0">
+        <div className="flex items-center gap-4 md:gap-6 shrink-0">
           <RibbonSegment />
         </div>
-        <div className="flex items-center gap-6 shrink-0">
+        <div className="flex items-center gap-4 md:gap-6 shrink-0">
           <RibbonSegment duplicate />
         </div>
-        <div className="flex items-center gap-6 shrink-0">
+        <div className="flex items-center gap-4 md:gap-6 shrink-0">
           <RibbonSegment duplicate />
         </div>
       </motion.div>

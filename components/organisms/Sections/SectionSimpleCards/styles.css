@@ -1,26 +1,40 @@
 .section-simple-cards {
   display: grid;
-  grid-template-areas:
-    'head cardA cardB'
-    'head cardC cardC';
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 
-  & div {
-    &:first-child {
-      grid-area: head;
-    }
+  /* Named areas only exist from md up: assigning them on the single-column
+     mobile grid would drop every card into the same implicit cell. */
+  @media (width >= 48rem) {
+    grid-template-areas:
+      'head head'
+      'cardA cardB'
+      'cardC cardC';
+    grid-template-columns: 1fr 1fr;
 
-    &:nth-child(2) {
-      grid-area: cardA;
-    }
+    & > div {
+      &:first-child {
+        grid-area: head;
+      }
 
-    &:nth-child(3) {
-      grid-area: cardB;
-    }
+      &:nth-child(2) {
+        grid-area: cardA;
+      }
 
-    &:nth-child(4) {
-      grid-area: cardC;
+      &:nth-child(3) {
+        grid-area: cardB;
+      }
+
+      &:nth-child(4) {
+        grid-area: cardC;
+      }
     }
+  }
+
+  @media (width >= 64rem) {
+    grid-template-areas:
+      'head cardA cardB'
+      'head cardC cardC';
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }

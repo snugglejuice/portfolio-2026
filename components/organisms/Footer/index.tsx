@@ -6,7 +6,8 @@ export default function Footer() {
       <div className="footer__contact grid grid-cols-1 lg:grid-cols-12 gap-4">
         <div
           className={cx(
-            'lg:col-start-1 lg:col-end-5 bg-foreground p-6 md:p-10 rounded-3xl',
+            'lg:col-start-1 lg:col-end-13',
+            'bg-foreground p-6 md:p-10 rounded-3xl',
             'flex flex-col justify-between gap-10 md:gap-16',
           )}
         >
@@ -46,7 +47,7 @@ export default function Footer() {
             </dd>
           </dl>
         </div>
-        <div className="footer__actions lg:col-start-5 lg:col-end-13 flex flex-col gap-4">
+        <div className="footer__actions lg:col-start-1 lg:col-end-13 flex flex-col gap-4">
           {/* <div className="bg-green-brand py-8 px-6 rounded-3xl flex flex-col justify-between gap-10 md:gap-16">
             <div className="flex flex-col gap-4">
               <h3 className="font-primary leading-none uppercase font-bold text-[32px]">

@@ -27,24 +27,30 @@ export default function ProjectMeta({ project }: { project: Project }) {
         ))}
       </dl>
 
-      <div className="col-start-2 col-end-12 flex flex-wrap gap-x-10 gap-y-4 mt-4 pt-8 border-t-2 border-black">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={EXTERNAL_LINK_CLASS}
-        >
-          Visit the live site ↗
-        </a>
-        <a
-          href={project.superhuitUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={EXTERNAL_LINK_CLASS}
-        >
-          Made at Superhuit ↗
-        </a>
-      </div>
+      {(project.liveUrl || project.superhuitUrl) && (
+        <div className="col-start-2 col-end-12 flex flex-wrap gap-x-10 gap-y-4 mt-4 pt-8 border-t-2 border-black">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={EXTERNAL_LINK_CLASS}
+            >
+              Visit the live site ↗
+            </a>
+          )}
+          {project.superhuitUrl && (
+            <a
+              href={project.superhuitUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={EXTERNAL_LINK_CLASS}
+            >
+              Made at Superhuit ↗
+            </a>
+          )}
+        </div>
+      )}
     </section>
   );
 }

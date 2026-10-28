@@ -17,14 +17,16 @@ export default function ChooseMeCard({
   return (
     <div
       className={cx(
-        `flex flex-col gap-4 bg-${color}-brand p-8 rounded-2xl border-2 h-max`,
+        `flex flex-col gap-4 bg-${color}-brand p-6 md:p-8 rounded-2xl border-2`,
+        // Full height in the mobile deck so every card covers the last one.
+        'h-full lg:h-max',
         className,
       )}
     >
-      <h3 className="font-primary uppercase font-bold text-[48px] leading-none">
+      <h3 className="font-primary uppercase font-bold text-3xl md:text-4xl xl:text-[48px] leading-none">
         {title}
       </h3>
-      <p className="font-secondary text-[20px]">{description}</p>
+      <p className="font-secondary text-lg xl:text-[20px]">{description}</p>
     </div>
   );
 }

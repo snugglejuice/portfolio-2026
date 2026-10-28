@@ -11,20 +11,20 @@ export default function SectionSimpleCards({
 }: SectionSimpleCardsProps) {
   return (
     <section className="section-simple-cards">
-      <div className="bg-foreground p-10 flex flex-col gap-4 rounded-3xl">
-        <h2 className="font-primary font-bold text-[64px] uppercase leading-none">
+      <div className="bg-foreground p-6 md:p-10 flex flex-col gap-4 rounded-3xl">
+        <h2 className="font-primary font-bold text-[44px] md:text-[64px] uppercase leading-none">
           {title}
         </h2>
-        <p className="font-secondary text-[24px] leading-none">
+        <p className="font-secondary text-xl md:text-[24px] leading-tight md:leading-none">
           {introduction}
         </p>
-        {cta && <Button label={cta.label} href={cta.link} />}
+        {cta && <Button label={cta.label} href={cta.link} className="mt-8" />}
       </div>
       {cards.map((card, index) => (
         <div
           key={`${card.title}-${index}`}
           className={cx(
-            'p-10 flex flex-col gap-4 rounded-3xl overflow-hidden',
+            'p-6 md:p-10 flex flex-col gap-4 rounded-3xl overflow-hidden',
             {
               'bg-yellow-brand': index % 3 === 0,
               'bg-blue-brand': index % 3 === 1,
@@ -32,10 +32,10 @@ export default function SectionSimpleCards({
             },
           )}
         >
-          <h3 className="font-primary font-bold uppercase text-[32px] leading-[24px]">
+          <h3 className="font-primary font-bold uppercase text-2xl md:text-[32px] leading-none md:leading-[24px]">
             {card.title}
           </h3>
-          <p className="font-secondary text-[24px] leading-normal">
+          <p className="font-secondary text-xl md:text-[24px] leading-normal">
             {card.description}
           </p>
           {card.tags && (

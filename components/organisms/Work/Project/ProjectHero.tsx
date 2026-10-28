@@ -16,9 +16,14 @@ export default function ProjectHero({
   project: Project;
   number: string;
 }) {
-  // Lets /work know which tab to morph back into on return.
+  // Lets /work (or the homepage) know which card to morph back into on
+  // return. Cleared on leaving: the next page has read it while rendering,
+  // and a later page must not morph a card in from somewhere else.
   useEffect(() => {
     workTransition.lastProjectSlug = project.slug;
+    return () => {
+      workTransition.lastProjectSlug = null;
+    };
   }, [project.slug]);
 
   // The text rises in (CSS) once the card has morphed in from /work.
