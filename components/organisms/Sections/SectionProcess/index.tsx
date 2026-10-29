@@ -1,12 +1,8 @@
 'use client';
 
 import cx from 'classnames';
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from 'motion/react';
+import * as m from 'motion/react-m';
+import { useScroll, useTransform, type MotionValue } from 'motion/react';
 import { useRef } from 'react';
 import { useIsDesktop } from '@/lib/useIsDesktop';
 import ProcessCard from './ProcessCard';
@@ -120,7 +116,7 @@ function StackedCard({
   );
 
   return (
-    <motion.div
+    <m.div
       className="absolute inset-x-0"
       style={{
         top: `${restTopRem}rem`,
@@ -134,7 +130,7 @@ function StackedCard({
         benefits={[...step.benefits]}
         color={step.color}
       />
-    </motion.div>
+    </m.div>
   );
 }
 

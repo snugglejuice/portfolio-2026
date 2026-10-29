@@ -2,9 +2,9 @@
 
 import type Lenis from 'lenis';
 import { useLenis } from 'lenis/react';
+import * as m from 'motion/react-m';
 import {
   clamp,
-  motion,
   useAnimationFrame,
   useMotionValue,
   useReducedMotion,
@@ -158,7 +158,7 @@ export default function InterventionArea() {
 
   return (
     <section className="bg-green-brand py-2 md:py-2.5 px-5 md:px-7.5 rounded-full overflow-hidden">
-      <motion.div
+      <m.div
         ref={trackRef}
         style={{ x, skewX }}
         className="flex gap-4 md:gap-6 w-max"
@@ -172,7 +172,7 @@ export default function InterventionArea() {
         <div className="flex items-center gap-4 md:gap-6 shrink-0">
           <RibbonSegment duplicate />
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

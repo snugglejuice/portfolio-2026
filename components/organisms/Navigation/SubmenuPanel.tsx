@@ -1,7 +1,7 @@
 'use client';
 
 import cx from 'classnames';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
 
 export interface SubmenuItem {
@@ -36,7 +36,7 @@ export default function SubmenuPanel({
     // so `fixed` can't be used): the card overhangs the right edge on
     // purpose, but must never widen the page.
     <div className="absolute -top-3 -inset-x-4 h-[700px] overflow-hidden pointer-events-none z-0">
-      <motion.div
+      <m.div
         id={id}
         className={cx(
           // Pivot ~100px above the viewport so, once tilted, the card's top
@@ -91,7 +91,7 @@ export default function SubmenuPanel({
             );
           })}
         </ul>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import cx from 'classnames';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 
 import portrait from './portrait.png';
 
@@ -18,7 +18,7 @@ export default function HeroHomepage({
   paragraphRef?: React.Ref<HTMLParagraphElement>;
 }) {
   return (
-    <motion.header
+    <m.header
       ref={ref}
       className={cx(
         // pt-32 keeps the content clear of the fixed navigation; min-h lets
@@ -36,6 +36,8 @@ export default function HeroHomepage({
             alt="Marion Séminel"
             width={54}
             height={54}
+            // Already sized for it: skip the srcset loader (lib/imageLoader.ts).
+            unoptimized
             className={cx('w-13.5 h-13.5 rounded-full')}
           />
           <div className={cx('flex flex-col gap-0')}>
@@ -63,6 +65,6 @@ export default function HeroHomepage({
           <b>improve user experience, generate leads,...</b>.
         </p>
       </div>
-    </motion.header>
+    </m.header>
   );
 }

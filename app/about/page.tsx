@@ -85,7 +85,8 @@ export default function About() {
             height={754}
             alt="Portrait - Marion Séminel"
             backColor="#ecc03a"
-            sizes="50vw"
+            // Columns 2-11 of the card on phones, 2-5 from lg.
+            sizes="(min-width: 1024px) 33vw, calc(100vw - 96px)"
           />
         </figure>
 

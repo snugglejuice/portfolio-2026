@@ -4,10 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import cx from 'classnames';
+import * as m from 'motion/react-m';
 import {
   animate,
   AnimatePresence,
-  motion,
   useMotionValue,
   useMotionValueEvent,
   useScroll,
@@ -218,7 +218,11 @@ export default function Navigation() {
           alt="Home — Marion Séminel"
           width={40}
           height={40}
-          priority
+          // `priority` is deprecated in Next 16; the file is tiny (120px,
+          // 3x the displayed size), so eager loading is all it needs.
+          loading="eager"
+          // Already sized for it: skip the srcset loader (lib/imageLoader.ts).
+          unoptimized
         />
       </Link>
 
@@ -242,7 +246,7 @@ export default function Navigation() {
           )}
           onPointerLeave={() => setHoveredIndex(null)}
         >
-          <motion.span
+          <m.span
             aria-hidden
             className="absolute top-1 bottom-1 left-0 rounded-full"
             style={{

@@ -17,11 +17,15 @@
   --font-nav: var(--font-rubik);
 
   /* Entrance for hero text: CSS (not JS) so the server-rendered HTML stays
-     visible without JavaScript; use as motion-safe:animate-rise. */
+     visible without JavaScript; use as motion-safe:animate-rise.
+     Starts at 0.01, not 0: Chrome skips opacity-0 text as a Largest
+     Contentful Paint candidate and never re-reports it once faded in, so the
+     hero headings could not count as LCP (a later, slower element did).
+     Visually identical to 0. */
   --animate-rise: rise 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
   @keyframes rise {
     from {
-      opacity: 0;
+      opacity: 0.01;
       transform: translateY(24px);
     }
   }

@@ -2,11 +2,14 @@
 
 import cx from 'classnames';
 import { useLenis } from 'lenis/react';
-import { AnimatePresence, motion } from 'motion/react';
+import * as m from 'motion/react-m';
+import { AnimatePresence } from 'motion/react';
 import { useRef, useState, ViewTransition } from 'react';
 
 import Button from '@/components/atoms/button';
-import StickerImage from '@/components/atoms/StickerImage';
+import StickerImage, {
+  preloadStickerScene,
+} from '@/components/atoms/StickerImage';
 import { BRAND_BG_CLASS, BRAND_HEX } from '@/lib/brand';
 import { COVER_SIZES, type Project } from '@/app/work/projects';
 import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
@@ -105,6 +108,10 @@ export default function ProjectTab({
             type="button"
             aria-expanded={isOpen}
             aria-controls={panelId}
+            // The sticker inside mounts on open: warm three.js up first.
+            onPointerEnter={preloadStickerScene}
+            onPointerDown={preloadStickerScene}
+            onFocus={preloadStickerScene}
             onClick={() => {
               setSettled(false);
               onToggle();
@@ -143,7 +150,7 @@ export default function ProjectTab({
                   </span>
                 ))}
               </span>
-              <motion.span
+              <m.span
                 aria-hidden
                 className="grid place-items-center size-12 md:size-16 rounded-full bg-black text-white"
                 animate={{ rotate: isOpen ? 90 : 0 }}
@@ -166,14 +173,14 @@ export default function ProjectTab({
                     strokeLinejoin="round"
                   />
                 </svg>
-              </motion.span>
+              </m.span>
             </span>
           </button>
         </h2>
 
         <AnimatePresence initial={false}>
           {isOpen && (
-            <motion.div
+            <m.div
               id={panelId}
               key="panel"
               role="region"
@@ -233,7 +240,7 @@ export default function ProjectTab({
                   />
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </li>

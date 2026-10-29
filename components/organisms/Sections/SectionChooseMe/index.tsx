@@ -1,7 +1,7 @@
 'use client';
 
+import * as m from 'motion/react-m';
 import {
-  motion,
   useInView,
   useScroll,
   useTransform,
@@ -91,14 +91,14 @@ function SlideUpCard({
   );
 
   return (
-    <motion.div className="col-start-1 row-start-1" style={{ y, rotate }}>
+    <m.div className="col-start-1 row-start-1" style={{ y, rotate }}>
       <ChooseMeCard
         title={card.title}
         description={card.description}
         color={card.color}
         className={card.className}
       />
-    </motion.div>
+    </m.div>
   );
 }
 

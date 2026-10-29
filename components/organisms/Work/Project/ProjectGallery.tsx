@@ -64,7 +64,8 @@ export default function ProjectGallery({
             key={row[0].src}
             media={row[0]}
             backColor={backColor}
-            sizes="100vw"
+            // Width left inside the page and card padding.
+            sizes="(min-width: 768px) calc(100vw - 112px), calc(100vw - 80px)"
           />
         ) : (
           <div key={row[0].src} className="grid md:grid-cols-2 gap-4">
@@ -73,7 +74,7 @@ export default function ProjectGallery({
                 key={media.src}
                 media={media}
                 backColor={backColor}
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 768px) calc(50vw - 88px), calc(100vw - 80px)"
               />
             ))}
           </div>

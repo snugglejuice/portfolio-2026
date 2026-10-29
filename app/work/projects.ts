@@ -45,8 +45,9 @@ export const WORK_INTRO =
 const SUPERHUIT_URL = 'https://superhuit.ch/fr/';
 
 // Shared by the /work accordion and the project hero so both request the
-// same image file (see ProjectTab).
-export const COVER_SIZES = '(min-width: 768px) 84vw, 100vw';
+// same image file (see ProjectTab). On phones, the card gutters leave the
+// cover ~100vw - 96px wide.
+export const COVER_SIZES = '(min-width: 768px) 84vw, calc(100vw - 96px)';
 
 // Shown on the homepage, in /work order (and with their /work numbers, so a
 // card never morphs into a hero showing another number).
