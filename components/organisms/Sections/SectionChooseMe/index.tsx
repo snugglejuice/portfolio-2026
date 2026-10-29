@@ -125,6 +125,7 @@ export default function SectionChooseMe() {
             'rounded-3xl py-10 md:py-20 h-[calc(100svh-32px)]',
             'sticky top-4 overflow-hidden',
             'transition-all duration-500',
+            '2xl:flex 2xl:flex-col 2xl:justify-center',
             {
               'bg-foreground': !isInView,
               'bg-black': isInView,
@@ -158,6 +159,10 @@ export default function SectionChooseMe() {
               'md:max-w-xl md:mx-auto',
               'lg:flex lg:content-normal lg:h-auto lg:gap-4 lg:p-2',
               'lg:max-w-none lg:mx-0',
+              // The finalY offsets spread the cards from -64px to ~616px below
+              // the row's top, so its visual center sits ~100px under the row's
+              // own; shift up by that to center the composition in the panel.
+              '2xl:justify-center 2xl:-top-25',
             )}
           >
             {CHOOSE_ME_CARDS.map((card, index) => (
